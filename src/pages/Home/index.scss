@@ -10,6 +10,7 @@ h1 {
 
 h2 {
   color: $secondary;
+  font-size: 26px;
 }
 
 .card-detail {
@@ -39,13 +40,32 @@ h2 {
       }
     }
   }
+}
 
-  // p {
-  //   font-size: 20px;
+@media screen and (max-width: 640px) {
+  h2 {
+    font-size: 22px;
+  }
 
-  //   span {
-  //     color: $black;
-  //     font-size: 16px;
-  //   }
-  // }
+  .card-detail {
+    display: flex;
+    justify-content: space-between;
+    margin: 2em 0.5em;
+
+    &__title {
+      font-size: 16px;
+
+      &__account-number {
+        font-size: 16px !important;
+      }
+
+      &__balance {
+        font-size: 16px;
+
+        span {
+          font-size: 14px;
+        }
+      }
+    }
+  }
 }
