@@ -1,14 +1,16 @@
 import React, { FC, ReactNode } from "react";
+import { AppCard } from "../../components";
+import logo from "../../assets/test.png";
 
 interface HomeProps {}
 
 export const Home: FC<HomeProps> = () => {
   return (
     <section>
-      <div>
+      <AppCard>
         <h1>Hola Renzo Bienvenido</h1>
-      </div>
-      <div>
+      </AppCard>
+      <AppCard>
         <h2>CUENTAS</h2>
         <div>
           <div>
@@ -22,7 +24,7 @@ export const Home: FC<HomeProps> = () => {
             <span>Saldo disponible</span>
           </div>
         </div>
-      </div>
+      </AppCard>
     </section>
   );
 };

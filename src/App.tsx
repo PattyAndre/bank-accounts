@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Home } from "./pages/Home";
+import { BankAccount } from "./pages";
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <BankAccount />
     </div>
   );
 }
