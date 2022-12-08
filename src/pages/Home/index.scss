@@ -17,6 +17,9 @@ h2 {
   display: flex;
   justify-content: space-between;
   margin: 2em 0.5em;
+  padding: 1em;
+  cursor: pointer;
+  background: #b1b1b10d;
 
   &__title {
     color: $lightblue;

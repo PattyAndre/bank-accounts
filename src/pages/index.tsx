@@ -1,6 +1,12 @@
 import React from "react";
+import { AccountDetail } from "./AccountDetail";
 import { Home } from "./Home";
 
 export const BankAccount = () => {
-  return <Home />;
+  return (
+    <div>
+      <Home />
+      <AccountDetail />
+    </div>
+  );
 };

@@ -1,6 +1,6 @@
 import React, { FC, ReactNode, useEffect, useState } from "react";
 import { AppCard } from "../../components";
-// import { GetAccounts } from "../../service/accounts";
+import { AccountDetail } from "../AccountDetail";
 import "./index.scss";
 
 interface AccountProps {
@@ -33,6 +33,11 @@ export const Home = () => {
       });
   };
 
+  const getDetail = () => {
+    alert("as");
+    return <AccountDetail />;
+  };
+
   return (
     <section>
       <AppCard>
@@ -44,7 +49,7 @@ export const Home = () => {
         <div>
           <h2>CUENTAS</h2>
           {accounts.map((account: AccountProps) => (
-            <div className="card-detail" key={account.id}>
+            <div className="card-detail" key={account.id} onClick={getDetail}>
               <p className="card-detail__title">
                 {account.name} <br />
                 {/* Use the ID as account number */}

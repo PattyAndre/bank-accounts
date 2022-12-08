@@ -1,0 +1,36 @@
+@import "../../styles/base/variables";
+
+.account {
+  h2 {
+    color: $black;
+  }
+
+  .available-balance {
+    color: $secondary;
+  }
+}
+
+.account-detail {
+  &__content {
+    margin: 1em 0.5em;
+    font-size: 20px;
+
+    p {
+      font-style: italic;
+    }
+
+    &__movements {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5em 0;
+
+      span:first-child {
+        color: $lightblue;
+        font-weight: bold;
+      }
+
+      span {
+      }
+    }
+  }
+}
