@@ -62,6 +62,7 @@ const ACCOUNT_DETAIL_MOCK: IAccountDetail = {
     },
   ],
 };
+
 const AccountDetailPage: FC = () => {
   const navigate = useNavigate();
 
