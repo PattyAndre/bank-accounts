@@ -1,20 +1,25 @@
 import React, { FC, ReactNode, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { AppCard } from "../../components";
-import { AccountDetail } from "../AccountDetail";
 import "./index.scss";
 
-interface AccountProps {
+type AccountType = "CREDIT_CARD" | "ACCOUNT";
+type AccountStatus = "ACTIVE" | "INACTIVE";
+
+export interface Account {
   id: number;
   balance: number;
-  creditline: string | number | "";
+  creditline: string | number;
   name: string;
-  status: string;
-  type: string;
+  status: AccountStatus;
+  type: AccountType;
 }
 
-export const Home = () => {
-  const [accounts, setAccounts] = useState([]);
-  const [cards, setCards] = useState([]);
+const AccountPage = () => {
+  const navigate = useNavigate();
+
+  const [accounts, setAccounts] = useState<Account[]>([]);
+  const [cards, setCards] = useState<Account[]>([]);
 
   useEffect(() => {
     (async () => {
@@ -28,28 +33,31 @@ export const Home = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setAccounts(data.filter((item: any) => item.type === "ACCOUNT"));
-        setCards(data.filter((item: any) => item.type === "CREDIT_CARD"));
+        setAccounts(data.filter((item: Account) => item.type === "ACCOUNT"));
+        setCards(data.filter((item: Account) => item.type === "CREDIT_CARD"));
       });
   };
 
-  const getDetail = () => {
-    alert("as");
-    return <AccountDetail />;
+  const handleItemClick = (id: number) => {
+    navigate(`/accounts/${id}`);
   };
 
   return (
     <section>
       <AppCard>
-        <h1 className="textCenter">
+        <h1 className="text-center">
           Hola Renzo <br /> <p>Bienvenido!</p>
         </h1>
       </AppCard>
       <AppCard>
         <div>
           <h2>CUENTAS</h2>
-          {accounts.map((account: AccountProps) => (
-            <div className="card-detail" key={account.id} onClick={getDetail}>
+          {accounts.map((account) => (
+            <div
+              className="card-detail"
+              key={account.id}
+              onClick={() => handleItemClick(account.id)}
+            >
               <p className="card-detail__title">
                 {account.name} <br />
                 {/* Use the ID as account number */}
@@ -68,8 +76,12 @@ export const Home = () => {
       <AppCard>
         <div>
           <h2>TARJETAS</h2>
-          {cards.map((card: AccountProps) => (
-            <div className="card-detail" key={card.id}>
+          {cards.map((card) => (
+            <div
+              className="card-detail"
+              key={card.id}
+              onClick={() => handleItemClick(card.id)}
+            >
               <p className="card-detail__title">
                 {card.name} <br />
                 {/* Use the ID as account number */}
@@ -78,7 +90,7 @@ export const Home = () => {
                 </span>
               </p>
               <p className="card-detail__title__balance">
-                S/ {card.balance} <br />
+                S/ {card.creditline} <br />
                 <span>{card.creditline !== "" && "Línea de crédito"}</span>
               </p>
             </div>
@@ -88,3 +100,5 @@ export const Home = () => {
     </section>
   );
 };
+
+export default AccountPage;

@@ -1,12 +1,11 @@
-import { useState } from "react";
-import { BankAccount } from "./pages";
+import { Outlet } from "react-router-dom";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <BankAccount />
+      <Outlet />
     </div>
   );
-}
+};
 
 export default App;

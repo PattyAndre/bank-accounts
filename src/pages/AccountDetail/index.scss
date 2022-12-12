@@ -1,5 +1,25 @@
 @import "../../styles/base/variables";
 
+.header {
+  display: flex;
+  background-color: $blue;
+  padding: 8px 26px;
+  margin: auto;
+  margin-bottom: 0;
+}
+
+.close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: $white;
+  border-radius: 50%;
+  color: $black;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+
 .account {
   h2 {
     color: $black;
@@ -23,14 +43,24 @@
       display: flex;
       justify-content: space-between;
       padding: 0.5em 0;
+      border-bottom: 1px solid $secondary;
 
       span:first-child {
         color: $lightblue;
         font-weight: bold;
       }
-
-      span {
-      }
     }
+  }
+}
+
+.see-more {
+  color: $lightblue;
+  text-align: center;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 640px) {
+  .header {
+    margin: -26px;
   }
 }
